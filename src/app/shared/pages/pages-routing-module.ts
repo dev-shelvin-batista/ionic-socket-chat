@@ -8,12 +8,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [validateGuard]
+    canActivate: []
   },
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [validateGuard]
+    canActivate: []
   }
 ];
 

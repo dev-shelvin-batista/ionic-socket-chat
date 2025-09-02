@@ -1,7 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Header</ion-title>
+    <ion-title class="ion-text-center">Chat Example</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="logOut()">Exit</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of [1,1,1,1,1,1,1,1,1]" (click)="selectUser(item)">
+      <ion-icon name="person" slot="start" color="success" size="large"></ion-icon>
+      <ion-label>User Example</ion-label>
+      <ion-badge color="primary" mode="ios" slot="end">42</ion-badge>
+    </ion-item>
+  </ion-list>
 </ion-content>
