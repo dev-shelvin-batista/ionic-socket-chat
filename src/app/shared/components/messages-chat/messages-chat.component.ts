@@ -35,6 +35,9 @@ export class MessagesChatComponent  implements OnInit {
     this.scrollToBottom();
   }
 
+  /**
+   * Method for closing the component as modal
+   */
   closeModal = () => {
     this.modalController.dismiss();
   }

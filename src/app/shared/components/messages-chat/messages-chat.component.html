@@ -9,11 +9,14 @@
 <ion-content #scrollContainer>
   <ion-list class="ion-margin-top">
     <ng-container *ngFor="let item of messagesSer.messages">
-      <ion-item [class]="item.sender === connectionSer.db.getItem('userNameIonic') ? 'sent-message' : 'received-message'" lines="none">
+      <ion-item [class]="(item.sender === connectionSer.db.getItem('userNameIonic')) ? 'sent-message' : 'received-message'" lines="none">
         
-        <div class="chat-bubble">
-          <ion-label>{{ item.text }}</ion-label>
-          <ion-badge color="light" slot="end" class="ion-text-end">{{ item.date }}</ion-badge>
+        <div class="chat-bubble" [class]="(item.sender === connectionSer.db.getItem('userNameIonic')) ? 'ion-text-end' : 'ion-text-start'" >
+          <ion-badge color="secondary" slot="end" [class]="(item.sender === connectionSer.db.getItem('userNameIonic')) ? 'ion-text-end' : 'ion-text-start'">{{ (item.sender === connectionSer.db.getItem('userNameIonic')) ? 'You' : item.sender }}</ion-badge>
+          <ion-label class="ion-text-start">{{ item.text }}</ion-label>
+          <div class="ion-text-end">
+            <ion-badge color="light" slot="end">{{ item.date }}</ion-badge>
+          </div>
         </div>
       </ion-item>
     </ng-container>

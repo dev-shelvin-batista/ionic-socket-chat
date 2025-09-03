@@ -14,11 +14,11 @@ export class Alerts {
   ){}
   
    /**
-   * Metodo para generar una alerta con un mensaje
+   * Method for generating an alert with a message
    * 
-   * @param {string} header         Titulo a mostrar
-   * @param {string} message    Descripcion
-   * @param {Function} fnt_ok  Metodo a ejecutarse en el evento clic del boton del modal antes de cerrarse
+   * @param {string} header         Title to display
+   * @param {string} message    Description
+   * @param {Function} fnt_ok  Method to be executed on the modal button click event before closing
    */
   generateSimpleAlert = async (header: string, message: string, fnt_ok: Function = () => {}) => {
     const alert = await this.alertController.create({
@@ -27,7 +27,7 @@ export class Alerts {
       mode: 'ios',
       buttons: [
         {
-          text: 'Aceptar',
+          text: 'Ok',
           handler: async () => {
             await fnt_ok();
           }
@@ -39,12 +39,12 @@ export class Alerts {
   }
 
   /**
-   * Metodo para generar una alerta de confirmación
+   * Method for generating a confirmation alert
    * 
-   * @param {string} header         Titulo a mostrar
-   * @param {string} message    Descripcion
-   * @param {Function} fnt_ok  Metodo a ejecutarse en el evento clic del boton aceptar antes de cerrarse la alerta
-   * @param {Function} fnt_cancel Metodo a ejecutarse en el evento clic del boton cancelar antes de cerrarse la alerta
+   * @param {string} header         Title to display
+   * @param {string} message    Description
+   * @param {Function} fnt_ok  Method to be executed when the accept button is clicked before the alert closes.
+   * @param {Function} fnt_cancel Method to be executed when the cancel button is clicked before the alert closes
    */
   generateConfirmationAlert = async (header: string, message: string, fnt_ok: Function = () => {}, fnt_cancel: Function = () => {}) => {
     const alert = await this.alertController.create({
@@ -53,13 +53,13 @@ export class Alerts {
       mode: 'ios',
       buttons: [
         {
-          text: 'Aceptar',
+          text: 'Ok',
           handler: async () => {
             await fnt_ok()
           }
         },
         {
-          text: 'Cancelar',
+          text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
           handler: async () => {
@@ -73,13 +73,13 @@ export class Alerts {
   }
   
   /**
-   * Cargar en pantalla un modal con un loading y un mensaje mientras se ejecuta una acción
+   * Display a modal with a loading indicator and a message while an action is being performed
    * 
-   * @param {string} message    Mensaje a mostrar
+   * @param {string} message    Message to display
    */
-  generateLoading = async (message: string = "Cargando...") => {
+  generateLoading = async (message: string = "Loading...") => {
     this.loading = await this.loadingController.create({
-      message: 'Cargando...',
+      message,
       spinner: 'bubbles',
       mode: 'ios',
     });
@@ -87,16 +87,16 @@ export class Alerts {
   }
 
   /**
-   * Cerrar el modal del loading
+   * Close the loading modal
    */
   closeLoading = async () => {
     await this.loading.dismiss();
   }
 
   /**
-   * Generar una notificación en pantalla con un mensaje
+   * Generate an on-screen notification with a message
    * 
-   * @param message Mensaje a mostrar
+   * @param message Message to display
    */
   generateNotification = async(message: string) => {
     const toast = await this.toastController.create({

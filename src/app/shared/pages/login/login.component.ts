@@ -19,6 +19,10 @@ export class LoginComponent  implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * Method for logging in and sending the user connection notification
+   * 
+   */
   login = () => {
     if((this.userName || '').trim() !== ""){
       this.connectionSer.db.setItem('userNameIonic', (this.userName || ''));
