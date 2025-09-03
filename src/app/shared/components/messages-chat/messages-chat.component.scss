@@ -1,0 +1,25 @@
+.chat-bubble {
+  padding: 8px 12px;
+  border-radius: 15px;
+  margin-bottom: 8px;
+  max-width: 80%; /* Limit bubble width */
+  width: 50%;
+}
+
+.sent-message .chat-bubble {
+  background-color: var(--ion-color-primary);
+  color: white;
+  margin-left: auto; /* Align to the right */
+}
+
+.received-message .chat-bubble {
+  background-color: var(--ion-color-light);
+  color: var(--ion-color-dark);
+  margin-right: auto; /* Align to the left */
+}
+.message__status {
+  position: fixed;
+  bottom: 10vh;
+  font-size: 13px;
+  font-style: italic;
+}

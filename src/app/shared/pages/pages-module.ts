@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { ComponentsModule } from '../components/components-module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { IonicModule } from '@ionic/angular';
     PagesRoutingModule,
     FormsModule,
     IonicModule,
+    ComponentsModule
   ]
 })
 export class PagesModule { }
