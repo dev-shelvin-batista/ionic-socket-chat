@@ -1,17 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Messages</ion-title>
+    <ion-title class="ion-text-center">Messages</ion-title>
     <ion-buttons slot="start">
       <ion-button color="danger" (click)="closeModal()"><ion-icon slot="icon-only" name="close"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content #scrollContainer>
+  <ion-list class="ion-margin-top">
+    <ng-container *ngFor="let item of messagesSer.messages">
+      <ion-item [class]="item.sender === connectionSer.db.getItem('userNameIonic') ? 'sent-message' : 'received-message'" lines="none">
+        
+        <div class="chat-bubble">
+          <ion-label>{{ item.text }}</ion-label>
+          <ion-badge color="light" slot="end" class="ion-text-end">{{ item.date }}</ion-badge>
+        </div>
+      </ion-item>
+    </ng-container>
+    
+  </ion-list>
+  <div class="message__status ion-padding-start">
+    <ion-badge color="dark" slot="start" class="ion-text-end">{{ typingStatus }}</ion-badge>
+ </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-textarea label="" labelPlacement="floating"></ion-textarea>
-    <ion-button color="primary" slot="end"><ion-icon name="send"></ion-icon></ion-button>
-    
+    <ion-textarea label="" labelPlacement="floating" [(ngModel)]="message"></ion-textarea>
+    <ion-button color="primary" slot="end" (click)="sendMessage()"><ion-icon name="send"></ion-icon></ion-button>    
   </ion-toolbar>
 </ion-footer>

@@ -8,10 +8,10 @@
     <ion-card-content>
       
       <ion-item>
-        <ion-input label="Username" labelPlacement="floating"></ion-input>
+        <ion-input label="Username" labelPlacement="floating" [(ngModel)]="userName"></ion-input>
       </ion-item>
 
-      <ion-button color="primary" expand="full">Enter</ion-button>
+      <ion-button color="primary" expand="full" (click)="login()">Enter</ion-button>
     </ion-card-content>
   </ion-card>
   

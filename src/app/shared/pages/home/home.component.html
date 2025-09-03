@@ -8,10 +8,12 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of [1,1,1,1,1,1,1,1,1]" (click)="selectUser(item)">
-      <ion-icon name="person" slot="start" color="success" size="large"></ion-icon>
-      <ion-label>User Example</ion-label>
-      <ion-badge color="primary" mode="ios" slot="end">42</ion-badge>
-    </ion-item>
+    <ng-container *ngFor="let item of listUsers">
+      <ion-item *ngIf="item.socketID != connectionSer.db.getItem('userNameIonic')" (click)="selectUser(item)">
+        <ion-icon name="person" slot="start" [color]="item.online ? 'success' : 'danger'" size="large"></ion-icon>
+        <ion-label>{{ item.userName }}</ion-label>
+        <ion-badge color="primary" mode="ios" slot="end" *ngIf="item.new_messages > 0">{{ item.new_messages }}</ion-badge>      
+      </ion-item>      
+    </ng-container>
   </ion-list>
 </ion-content>
