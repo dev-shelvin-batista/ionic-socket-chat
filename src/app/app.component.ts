@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * Evento para ejecutar instrucciones cuando carga el componente
+   * Event to execute instructions when loading the component
    */
   async ngOnInit() {}
 
