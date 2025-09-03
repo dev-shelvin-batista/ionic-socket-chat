@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -34,9 +35,9 @@ export class Connection {
   }
 
   /**
-   * 
+   * Method for initiating connection to the socket server
    */
   connectSocketCliente = () => {
-    this.socket = io('http://localhost:4000', {transports: ['websocket'],});
+    this.socket = io(environment.SOCKET, {transports: ['websocket'],});
   }
 }
