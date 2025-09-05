@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
           this.alertSer.generateConfirmationAlert(
             "Confirmation",
             "Do you want to exit the application?",
-            '',
+            'Yes',
             async () => {
               (navigator as any).app.exitApp();
             },
