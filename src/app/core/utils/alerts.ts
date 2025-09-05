@@ -41,25 +41,27 @@ export class Alerts {
   /**
    * Method for generating a confirmation alert
    * 
-   * @param {string} header         Title to display
-   * @param {string} message    Description
-   * @param {Function} fnt_ok  Method to be executed when the accept button is clicked before the alert closes.
-   * @param {Function} fnt_cancel Method to be executed when the cancel button is clicked before the alert closes
+   * @param   {string}    header           Title to display
+   * @param   {string}    message     Description
+   * @param   {string}    textButtonOk      Text on the Accept button
+   * @param   {Function}  fnt_ok  Method to be executed when the OK button in the modal is clicked before closing
+   * @param   {string}    textButtonCancel      Cancel button text
+   * @param   {Function}  fnt_cancel  Method to be executed when the OK button in the modal is clicked before closing.
    */
-  generateConfirmationAlert = async (header: string, message: string, fnt_ok: Function = () => {}, fnt_cancel: Function = () => {}) => {
+  generateConfirmationAlert = async (header:string, message: string, textButtonOk = 'Ok', fnt_ok: Function = () => {}, textButtonCancel = 'Cancel', fnt_cancel: Function = () => {}) => {
     const alert = await this.alertController.create({
       header,
       message,
       mode: 'ios',
       buttons: [
         {
-          text: 'Ok',
+          text: textButtonOk,
           handler: async () => {
             await fnt_ok()
           }
         },
         {
-          text: 'Cancel',
+          text: textButtonCancel,
           role: 'cancel',
           cssClass: 'secondary',
           handler: async () => {
