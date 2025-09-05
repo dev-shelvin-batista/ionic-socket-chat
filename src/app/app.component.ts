@@ -44,11 +44,13 @@ export class AppComponent implements OnInit {
         } else {
           // Exit the app if at the root page and no more navigation history
           this.alertSer.generateConfirmationAlert(
-            "Confirmación",
-            "¿Desea salir de la aplicación?",
+            "Confirmation",
+            "Do you want to exit the application?",
+            '',
             async () => {
               (navigator as any).app.exitApp();
-            }
+            },
+            'No'
           );
           
         }
