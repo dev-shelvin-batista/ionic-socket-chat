@@ -128,13 +128,15 @@ export class HomeComponent  implements OnInit {
    */
   logOut = () => {
     this.alertSer.generateConfirmationAlert(
-      "Confirmación", 
-      "¿Desea cerrar sesión?",
+      "Confirmation", 
+      "Do you want to log out?",
+      'Yes',
       async () => {
         this.connectionSer.socket.emit('disconnectUser', { userName: this.connectionSer.db.getItem("userNameIonic"), socketID: this.connectionSer.db.getItem("userNameIonic") });
         this.connectionSer.db.removeItem('userNameIonic');
         this.router.navigate(['/login'], { relativeTo: this.activatedRoute });
-      }
+      },
+      'No'
     )
   }
 }
