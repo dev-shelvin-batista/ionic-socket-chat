@@ -1,5 +1,7 @@
 # Project details
 
+Application to generate a chat with Ionic Angular connecting to socket private channels of a backend development project in NodeJS.
+
 |                |Versión							|
 |----------------|-------------------------------|
 |Angular|`20.0.0`            |
