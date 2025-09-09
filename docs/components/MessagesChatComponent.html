@@ -1,0 +1,1002 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Ionic-Chat-Socket</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/laravel.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Ionic-Chat-Socket</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MessagesChatComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/messages-chat/messages-chat.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-messages-chat</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./messages-chat.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./messages-chat.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#closeModal" >closeModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#connectionSer" >connectionSer</a>
+                            </li>
+                            <li>
+                                <a href="#message" >message</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#messagesSer" >messagesSer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#myScrollContainer" >myScrollContainer</a>
+                            </li>
+                            <li>
+                                <a href="#sendMessage" >sendMessage</a>
+                            </li>
+                            <li>
+                                <a href="#typingStatus" >typingStatus</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngAfterViewChecked" >ngAfterViewChecked</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#scrollToBottom" >scrollToBottom</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(modalController: ModalController, connectionSer: <a href="../injectables/Connection.html" target="_self">Connection</a>, messagesSer: <a href="../injectables/Messages.html" target="_self">Messages</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>modalController</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>connectionSer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/Connection.html" target="_self" >Connection</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>messagesSer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/Messages.html" target="_self" >Messages</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewChecked"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewChecked</b></span>
+                        <a href="#ngAfterViewChecked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewChecked()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="23"
+                                    class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scrollToBottom"></a>
+                    <span class="name">
+                        <span ><b>scrollToBottom</b></span>
+                        <a href="#scrollToBottom"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>scrollToBottom()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Method for scrolling to the end</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeModal"></a>
+                    <span class="name">
+                        <span ><b>closeModal</b></span>
+                        <a href="#closeModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method for closing the component as modal</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="connectionSer"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>connectionSer</b></span>
+                        <a href="#connectionSer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/Connection.html" target="_self" >Connection</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="message"></a>
+                    <span class="name">
+                        <span ><b>message</b></span>
+                        <a href="#message"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="messagesSer"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>messagesSer</b></span>
+                        <a href="#messagesSer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/Messages.html" target="_self" >Messages</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="myScrollContainer"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>myScrollContainer</b></span>
+                        <a href="#myScrollContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;scrollContainer&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendMessage"></a>
+                    <span class="name">
+                        <span ><b>sendMessage</b></span>
+                        <a href="#sendMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method for notifying a new message</p>
+</div>
+                </td>
+            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>e</td>
+                                                    <td>
+                                                            <code><p>Form event</p>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="typingStatus"></a>
+                    <span class="name">
+                        <span ><b>typingStatus</b></span>
+                        <a href="#typingStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/shared/components/messages-chat/messages-chat.component.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { ModalController } from &#x27;@ionic/angular&#x27;;
+import { Messages } from &#x27;src/app/core/services/messages&#x27;;
+import { Connection } from &#x27;src/app/intranet/connection&#x27;;
+
+@Component({
+  selector: &#x27;app-messages-chat&#x27;,
+  templateUrl: &#x27;./messages-chat.component.html&#x27;,
+  styleUrls: [&#x27;./messages-chat.component.scss&#x27;],
+  standalone: false,
+})
+export class MessagesChatComponent  implements OnInit {
+  typingStatus &#x3D; &#x27;&#x27;;
+  message &#x3D; &#x27;&#x27;;
+  @ViewChild(&#x27;scrollContainer&#x27;) private myScrollContainer!: ElementRef;
+
+  constructor(
+    private modalController: ModalController,
+    public connectionSer: Connection,
+    public messagesSer: Messages,
+  ) { }
+
+  ngOnInit() {
+    this.connectionSer.socket.on(&#x27;typingResponse&#x27;, (data) &#x3D;&gt; {
+      if(this.messagesSer.userSelected &#x3D;&#x3D; data.user){
+        this.typingStatus &#x3D; data.text;
+      }
+      setTimeout(() &#x3D;&gt; {
+        this.typingStatus &#x3D; &#x27;&#x27;;
+      }, 1000);
+    });
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  /**
+   * Method for closing the component as modal
+   */
+  closeModal &#x3D; () &#x3D;&gt; {
+    this.modalController.dismiss();
+  }
+
+  /**
+   * Method for scrolling to the end
+   */
+  scrollToBottom(): void {
+    try {
+      this.myScrollContainer.nativeElement.scrollTop &#x3D; this.myScrollContainer.nativeElement.scrollHeight;
+    } catch(err) { }
+  }
+
+  /**
+   * Method for notifying a new message
+   * 
+   * @param e Form event
+   */
+  sendMessage &#x3D; () &#x3D;&gt; {
+    if((this.message || &#x27;&#x27;).trim() !&#x3D; &quot;&quot;){
+      let obj_message &#x3D; {};
+      const date &#x3D; new Date();
+      let day &#x3D; date.getDate() &lt; 10 ? &#x60;0${date.getDate()}&#x60; : date.getDate();
+      let month &#x3D; (date.getMonth() + 1) &lt; 10 ? &#x60;0${(date.getMonth() + 1)}&#x60; : (date.getMonth() + 1);
+      let year &#x3D; date.getFullYear();
+      let hour &#x3D; date.getHours() &lt; 10 ? &#x60;0${date.getHours()}&#x60; : date.getHours();
+      let minute &#x3D; date.getMinutes() &lt; 10 ? &#x60;0${date.getMinutes()}&#x60; : date.getMinutes();
+      let currentDate &#x3D; &#x60;${year}-${month}-${day} ${hour}:${minute}&#x60;;
+
+      let listUsers &#x3D; JSON.parse(this.connectionSer.db.getItem(&quot;list_usersIonic&quot;) || &quot;[]&quot;);
+      const user &#x3D; listUsers.find((user:any) &#x3D;&gt; user.socketID &#x3D;&#x3D;&#x3D; this.messagesSer.userSelected);
+
+      obj_message &#x3D; {
+        text: this.message,
+        date: currentDate,
+        sender: this.connectionSer.db.getItem(&#x27;userNameIonic&#x27;),
+        to: this.messagesSer.userSelected
+      }
+
+      user.messages.push(obj_message)
+      this.connectionSer.db.setItem(&#x27;list_usersIonic&#x27;, JSON.stringify(listUsers)); 
+
+      
+      this.messagesSer.messages.push(obj_message)
+
+      this.connectionSer.socket.emit(&#x27;message&#x27;, obj_message);
+      this.message &#x3D; &#x27;&#x27;;
+    }
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-title class&#x3D;&quot;ion-text-center&quot;&gt;Messages&lt;/ion-title&gt;
+    &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+      &lt;ion-button color&#x3D;&quot;danger&quot; (click)&#x3D;&quot;closeModal()&quot;&gt;&lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;close&quot;&gt;&lt;/ion-icon&gt;&lt;/ion-button&gt;
+    &lt;/ion-buttons&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+&lt;ion-content #scrollContainer&gt;
+  &lt;ion-list class&#x3D;&quot;ion-margin-top&quot;&gt;
+    &lt;ng-container *ngFor&#x3D;&quot;let item of messagesSer.messages&quot;&gt;
+      &lt;ion-item [class]&#x3D;&quot;(item.sender &#x3D;&#x3D;&#x3D; connectionSer.db.getItem(&#x27;userNameIonic&#x27;)) ? &#x27;sent-message&#x27; : &#x27;received-message&#x27;&quot; lines&#x3D;&quot;none&quot;&gt;
+        
+        &lt;div class&#x3D;&quot;chat-bubble&quot; [class]&#x3D;&quot;(item.sender &#x3D;&#x3D;&#x3D; connectionSer.db.getItem(&#x27;userNameIonic&#x27;)) ? &#x27;ion-text-end&#x27; : &#x27;ion-text-start&#x27;&quot; &gt;
+          &lt;ion-badge color&#x3D;&quot;secondary&quot; slot&#x3D;&quot;end&quot; [class]&#x3D;&quot;(item.sender &#x3D;&#x3D;&#x3D; connectionSer.db.getItem(&#x27;userNameIonic&#x27;)) ? &#x27;ion-text-end&#x27; : &#x27;ion-text-start&#x27;&quot;&gt;{{ (item.sender &#x3D;&#x3D;&#x3D; connectionSer.db.getItem(&#x27;userNameIonic&#x27;)) ? &#x27;You&#x27; : item.sender }}&lt;/ion-badge&gt;
+          &lt;ion-label class&#x3D;&quot;ion-text-start&quot;&gt;{{ item.text }}&lt;/ion-label&gt;
+          &lt;div class&#x3D;&quot;ion-text-end&quot;&gt;
+            &lt;ion-badge color&#x3D;&quot;light&quot; slot&#x3D;&quot;end&quot;&gt;{{ item.date }}&lt;/ion-badge&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/ion-item&gt;
+    &lt;/ng-container&gt;
+    
+  &lt;/ion-list&gt;
+  &lt;div class&#x3D;&quot;message__status ion-padding-start&quot;&gt;
+    &lt;ion-badge color&#x3D;&quot;dark&quot; slot&#x3D;&quot;start&quot; class&#x3D;&quot;ion-text-end&quot;&gt;{{ typingStatus }}&lt;/ion-badge&gt;
+ &lt;/div&gt;
+&lt;/ion-content&gt;
+&lt;ion-footer&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-textarea label&#x3D;&quot;&quot; labelPlacement&#x3D;&quot;floating&quot; [(ngModel)]&#x3D;&quot;message&quot;&gt;&lt;/ion-textarea&gt;
+    &lt;ion-button color&#x3D;&quot;primary&quot; slot&#x3D;&quot;end&quot; (click)&#x3D;&quot;sendMessage()&quot;&gt;&lt;ion-icon name&#x3D;&quot;send&quot;&gt;&lt;/ion-icon&gt;&lt;/ion-button&gt;    
+  &lt;/ion-toolbar&gt;
+&lt;/ion-footer&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./messages-chat.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.chat-bubble {
+  padding: 8px 12px;
+  border-radius: 15px;
+  margin-bottom: 8px;
+  max-width: 80%; /* Limit bubble width */
+  width: 50%;
+}
+
+.sent-message .chat-bubble {
+  background-color: var(--ion-color-light);
+  color: var(--ion-color-dark);
+  margin-left: auto; /* Align to the right */
+  height: auto;
+  text-wrap: wrap;
+}
+
+.received-message .chat-bubble {
+  background-color: var(--ion-color-primary);
+  color: white;
+  margin-right: auto; /* Align to the left */
+  height: auto;
+  text-wrap: wrap;
+}
+.message__status {
+  position: fixed;
+  bottom: 10vh;
+  font-size: 13px;
+  font-style: italic;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-title class="ion-text-center">Messages</ion-title>    <ion-buttons slot="start">      <ion-button color="danger" (click)="closeModal()"><ion-icon slot="icon-only" name="close"></ion-icon></ion-button>    </ion-buttons>  </ion-toolbar></ion-header><ion-content #scrollContainer>  <ion-list class="ion-margin-top">    <ng-container *ngFor="let item of messagesSer.messages">      <ion-item [class]="(item.sender === connectionSer.db.getItem(\'userNameIonic\')) ? \'sent-message\' : \'received-message\'" lines="none">                <div class="chat-bubble" [class]="(item.sender === connectionSer.db.getItem(\'userNameIonic\')) ? \'ion-text-end\' : \'ion-text-start\'" >          <ion-badge color="secondary" slot="end" [class]="(item.sender === connectionSer.db.getItem(\'userNameIonic\')) ? \'ion-text-end\' : \'ion-text-start\'">{{ (item.sender === connectionSer.db.getItem(\'userNameIonic\')) ? \'You\' : item.sender }}</ion-badge>          <ion-label class="ion-text-start">{{ item.text }}</ion-label>          <div class="ion-text-end">            <ion-badge color="light" slot="end">{{ item.date }}</ion-badge>          </div>        </div>      </ion-item>    </ng-container>      </ion-list>  <div class="message__status ion-padding-start">    <ion-badge color="dark" slot="start" class="ion-text-end">{{ typingStatus }}</ion-badge> </div></ion-content><ion-footer>  <ion-toolbar>    <ion-textarea label="" labelPlacement="floating" [(ngModel)]="message"></ion-textarea>    <ion-button color="primary" slot="end" (click)="sendMessage()"><ion-icon name="send"></ion-icon></ion-button>      </ion-toolbar></ion-footer></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MessagesChatComponent', 'selector': 'app-messages-chat'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'MessagesChatComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MessagesChatComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
