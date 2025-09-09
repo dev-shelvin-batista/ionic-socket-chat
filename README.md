@@ -9,6 +9,10 @@ Application to generate a chat with Ionic Angular connecting to socket private c
 |Node.js          |`22.14.0`|
 |Ionic CLI          |`5.4.6`|
 
+## Important note 
+
+The source code documentation and project structure were generated using the compodoc library, which generates a static web page that can be deployed on a server. In this case, it was deployed on GitHub. [Documentation](https://dev-shelvin-batista.github.io/ionic-socket-chat/)
+
 ## Instructions
 
 To run the frontend project, follow these steps:
