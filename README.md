@@ -8,6 +8,7 @@ Application to generate a chat with Ionic Angular connecting to socket private c
 |NPM          |`11.5.2`            |
 |Node.js          |`22.14.0`|
 |Ionic CLI          |`5.4.6`|
+|Docker          ||
 
 ## Important note 
 
