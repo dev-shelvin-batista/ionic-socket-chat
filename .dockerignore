@@ -1,0 +1,10 @@
+.git
+.gitignore
+Dockerfile
+.dockerignore
+node_modules
+platforms
+resources
+plugins
+docs
+www
